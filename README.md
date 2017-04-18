@@ -1,9 +1,14 @@
-# api documentation for  [gulp-minify (v0.0.15)](https://github.com/hustxiaoc/gulp-minify)  [![npm package](https://img.shields.io/npm/v/npmdoc-gulp-minify.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-gulp-minify) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-gulp-minify.svg)](https://travis-ci.org/npmdoc/node-npmdoc-gulp-minify)
+# npmdoc-gulp-minify
+
+#### api documentation for  [gulp-minify (v0.0.15)](https://github.com/hustxiaoc/gulp-minify)  [![npm package](https://img.shields.io/npm/v/npmdoc-gulp-minify.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-gulp-minify) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-gulp-minify.svg)](https://travis-ci.org/npmdoc/node-npmdoc-gulp-minify)
+
 #### js minify plugin for gulp
 
-[![NPM](https://nodei.co/npm/gulp-minify.png?downloads=true)](https://www.npmjs.com/package/gulp-minify)
+[![NPM](https://nodei.co/npm/gulp-minify.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/gulp-minify)
 
-[![apidoc](https://npmdoc.github.io/node-npmdoc-gulp-minify/build/screenCapture.buildNpmdoc.browser._2Fhome_2Ftravis_2Fbuild_2Fnpmdoc_2Fnode-npmdoc-gulp-minify_2Ftmp_2Fbuild_2Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-gulp-minify/build/apidoc.html)
+- [https://npmdoc.github.io/node-npmdoc-gulp-minify/build/apidoc.html](https://npmdoc.github.io/node-npmdoc-gulp-minify/build/apidoc.html)
+
+[![apidoc](https://npmdoc.github.io/node-npmdoc-gulp-minify/build/screenCapture.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-gulp-minify/build/apidoc.html)
 
 ![npmPackageListing](https://npmdoc.github.io/node-npmdoc-gulp-minify/build/screenCapture.npmPackageListing.svg)
 
@@ -41,13 +46,11 @@
     "main": "index.js",
     "maintainers": [
         {
-            "name": "taojie",
-            "email": "308512341@qq.com"
+            "name": "taojie"
         }
     ],
     "name": "gulp-minify",
     "optionalDependencies": {},
-    "readme": "ERROR: No README data found!",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/hustxiaoc/gulp-minify.git"
@@ -58,16 +61,6 @@
     "version": "0.0.15"
 }
 ```
-
-
-
-# <a name="apidoc.tableOfContents"></a>[table of contents](#apidoc.tableOfContents)
-
-#### [module gulp-minify](#apidoc.module.gulp-minify)
-
-
-
-# <a name="apidoc.module.gulp-minify"></a>[module gulp-minify](#apidoc.module.gulp-minify)
 
 
 

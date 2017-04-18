@@ -61,12 +61,177 @@
 
     <li class="apidocModuleLi"><a href="#apidoc.module.gulp-minify">module gulp-minify</a><ol>
 
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gulp-minify.gulp-minify">
+            function <span class="apidocSignatureSpan"></span>gulp-minify
+            <span class="apidocSignatureSpan">(opt)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gulp-minify.toString">
+            function <span class="apidocSignatureSpan">gulp-minify.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.gulp-minify.toString">module gulp-minify.toString</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gulp-minify.toString.toString">
+            function <span class="apidocSignatureSpan">gulp-minify.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
     </ol></li>
 
 </ol></div>
 
 <div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.gulp-minify" id="apidoc.module.gulp-minify">module gulp-minify</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.gulp-minify.gulp-minify" id="apidoc.element.gulp-minify.gulp-minify">
+        function <span class="apidocSignatureSpan"></span>gulp-minify
+        <span class="apidocSignatureSpan">(opt)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">gulp-minify = function (opt) {
+  var options = opt || {},
+    ext = parseExt(options.ext);
+
+  options.output =  options.output ||  {};
+  function minify(file, encoding, callback) {
+
+    if (file.isNull()) {
+      this.push(file);
+      return callback();
+    }
+
+    if (file.isStream()) {
+      this.emit(&#x27;end&#x27;);
+      return new callback(PluginError(&#x27;gulp-minify&#x27;, &#x27;Streaming not supported:&#x27; + file.path));
+    }
+
+    var ignore = false;
+
+    if (options.exclude) {
+      ignore = options.exclude.some(function(item) {
+        return path.dirname(file.path).split(pathSeparatorRe).some(function(pathName) {
+          return minimatch(pathName, item);
+        });
+      });
+    }
+
+    if (!ignore &#x26;&#x26; options.ignoreFiles) {
+      ignore = options.ignoreFiles.some(function(item) {
+        return minimatch(path.basename(file.path), item);
+      });
+    }
+
+    if (ignore || path.extname(file.path) != &#x27;.js&#x27;) {
+      this.push(file);
+      return callback();
+    }
+
+    var mangled,
+      originalSourceMap;
+
+    if (file.sourceMap) {
+      options.outSourceMap = file.relative;
+      if (file.sourceMap.mappings !== &#x27;&#x27;) {
+        options.inSourceMap = file.sourceMap;
+      }
+      originalSourceMap = file.sourceMap;
+    }
+
+    if (options.preserveComments === &#x27;all&#x27;) {
+      options.output.comments = true;
+    } else if (options.preserveComments === &#x27;some&#x27;) {
+
+      options.output.comments = /^!|@preserve|@license|@cc_on/i;
+    } else if (typeof options.preserveComments === &#x27;function&#x27;) {
+      options.output.comments = options.preserveComments;
+    }
+    options.fromString = options.hasOwnProperty(&#x22;fromString&#x22;) ? options.fromString : true;
+
+    var min_file = new gutil.File({
+      path: Array.isArray(ext.min) ? file.path.replace(ext.min[0], ext.min[1]) : file.path.replace(/\.js$/, ext.min),
+      base: file.base
+    });
+
+    try {
+      mangled = uglify.minify(String(file.contents), options);
+      min_file.contents = new Buffer(mangled.code.replace(reSourceMapComment, &#x27;&#x27;));
+    } catch (e) {
+      this.emit(&#x27;end&#x27;);
+      return callback(new PluginError(&#x27;gulp-minify&#x27;, formatError(e, file)));
+    }
+
+    if (file.sourceMap) {
+      min_file.sourceMap = JSON.parse(mangled.map);
+      min_file.sourceMap.sourcesContent = originalSourceMap.sourcesContent;
+      min_file.sourceMap.sources = originalSourceMap.sources;
+    }
+
+    this.push(min_file);
+
+    if (!options.noSource) {
+      file.path = file.path.replace(/\.js$/, ext.src);
+      this.push(file);
+    }
+    callback();
+  }
+
+  return through.obj(minify);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.gulp-minify.toString" id="apidoc.element.gulp-minify.toString">
+        function <span class="apidocSignatureSpan">gulp-minify.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function () {
+    return text;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.gulp-minify.toString" id="apidoc.module.gulp-minify.toString">module gulp-minify.toString</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.gulp-minify.toString.toString" id="apidoc.element.gulp-minify.toString.toString">
+        function <span class="apidocSignatureSpan">gulp-minify.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function toString() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
 
 </div>
 

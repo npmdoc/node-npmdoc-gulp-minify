@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="https://github.com/hustxiaoc/gulp-minify"
-
-    >gulp-minify (v0.0.15)</a>
+    <a href="https://github.com/hustxiaoc/gulp-minify">gulp-minify (v0.0.15)</a>
 </h1>
 <h4>js minify plugin for gulp</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.gulp-minify">module gulp-minify</a><ol>
 
@@ -120,8 +113,8 @@
     }
 
     if (file.isStream()) {
-      this.emit(&#x27;end&#x27;);
-      return new callback(PluginError(&#x27;gulp-minify&#x27;, &#x27;Streaming not supported:&#x27; + file.path));
+      this.emit('end');
+      return new callback(PluginError('gulp-minify', 'Streaming not supported:' + file.path));
     }
 
     var ignore = false;
@@ -134,13 +127,13 @@
       });
     }
 
-    if (!ignore &#x26;&#x26; options.ignoreFiles) {
+    if (!ignore &amp;&amp; options.ignoreFiles) {
       ignore = options.ignoreFiles.some(function(item) {
         return minimatch(path.basename(file.path), item);
       });
     }
 
-    if (ignore || path.extname(file.path) != &#x27;.js&#x27;) {
+    if (ignore || path.extname(file.path) != '.js') {
       this.push(file);
       return callback();
     }
@@ -150,21 +143,21 @@
 
     if (file.sourceMap) {
       options.outSourceMap = file.relative;
-      if (file.sourceMap.mappings !== &#x27;&#x27;) {
+      if (file.sourceMap.mappings !== '') {
         options.inSourceMap = file.sourceMap;
       }
       originalSourceMap = file.sourceMap;
     }
 
-    if (options.preserveComments === &#x27;all&#x27;) {
+    if (options.preserveComments === 'all') {
       options.output.comments = true;
-    } else if (options.preserveComments === &#x27;some&#x27;) {
+    } else if (options.preserveComments === 'some') {
 
       options.output.comments = /^!|@preserve|@license|@cc_on/i;
-    } else if (typeof options.preserveComments === &#x27;function&#x27;) {
+    } else if (typeof options.preserveComments === 'function') {
       options.output.comments = options.preserveComments;
     }
-    options.fromString = options.hasOwnProperty(&#x22;fromString&#x22;) ? options.fromString : true;
+    options.fromString = options.hasOwnProperty("fromString") ? options.fromString : true;
 
     var min_file = new gutil.File({
       path: Array.isArray(ext.min) ? file.path.replace(ext.min[0], ext.min[1]) : file.path.replace(/\.js$/, ext.min),
@@ -173,10 +166,10 @@
 
     try {
       mangled = uglify.minify(String(file.contents), options);
-      min_file.contents = new Buffer(mangled.code.replace(reSourceMapComment, &#x27;&#x27;));
+      min_file.contents = new Buffer(mangled.code.replace(reSourceMapComment, ''));
     } catch (e) {
-      this.emit(&#x27;end&#x27;);
-      return callback(new PluginError(&#x27;gulp-minify&#x27;, formatError(e, file)));
+      this.emit('end');
+      return callback(new PluginError('gulp-minify', formatError(e, file)));
     }
 
     if (file.sourceMap) {
@@ -241,3 +234,4 @@
     ]
 </div>
 </div>
+</body></html>

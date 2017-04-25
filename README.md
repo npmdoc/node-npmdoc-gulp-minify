@@ -1,6 +1,6 @@
 # npmdoc-gulp-minify
 
-#### api documentation for  [gulp-minify (v0.0.15)](https://github.com/hustxiaoc/gulp-minify)  [![npm package](https://img.shields.io/npm/v/npmdoc-gulp-minify.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-gulp-minify) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-gulp-minify.svg)](https://travis-ci.org/npmdoc/node-npmdoc-gulp-minify)
+#### basic api documentation for  [gulp-minify (v0.0.15)](https://github.com/hustxiaoc/gulp-minify)  [![npm package](https://img.shields.io/npm/v/npmdoc-gulp-minify.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-gulp-minify) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-gulp-minify.svg)](https://travis-ci.org/npmdoc/node-npmdoc-gulp-minify)
 
 #### js minify plugin for gulp
 
@@ -58,7 +58,8 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
-    "version": "0.0.15"
+    "version": "0.0.15",
+    "bin": {}
 }
 ```
 
